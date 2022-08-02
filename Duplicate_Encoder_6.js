@@ -1,3 +1,16 @@
+/*
+The goal of this exercise is to convert a string to a new string where each character 
+in the new string is "(" if that character appears only once in the original string, 
+or ")" if that character appears more than once in the original string. 
+Ignore capitalization when determining if a character is a duplicate.
+
+Examples
+"din"      =>  "((("
+"recede"   =>  "()()()"
+"Success"  =>  ")())())"
+"(( @"     =>  "))((" 
+*/
+
 // take string and count the instances of each indv char
 // use object to store values
   // split into arr > for each loop if char is in object add one if not create new property thats equal to one
