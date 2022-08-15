@@ -25,3 +25,4 @@ if (n === 1){
   return []
 } else { return signature; }
 }
+// slice from 0 to n could have been a better solution than creating if statement for all cases. 
