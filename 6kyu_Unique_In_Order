@@ -6,3 +6,29 @@ For example:
 uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
 uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
 */
+
+/* Plan
+- No elements of same value next to each other 
+- Original order of elements must be preserved 
+
+- create return array 
+- loop through the iterable
+- each loop compare the current item and the next item 
+- if the current and next item are not the same, push current item to return array 
+*/ 
+
+
+var uniqueInOrder=function(iterable){
+  let arr = []; 
+  
+  for (let i = 0; i < iterable.length; i++){
+   
+    let current = iterable[i]; 
+    let next = iterable[i + 1]; 
+
+    if (current !== next){
+      arr.push(current)
+    }
+  }
+  console.log('arr', arr);
+  return arr ; 
