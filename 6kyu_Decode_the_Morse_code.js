@@ -14,3 +14,43 @@ decodeMorse('.... . -.--   .--- ..- -.. .')
 //should return "HEY JUDE"
 NOTE: For coding purposes you have to use ASCII characters . and -, not Unicode characters.
 */ 
+
+/* Plan
+- a single space is used to separate the character codes
+- 3 spaces are used to seperate words
+
+- create return array 
+- split morseCode param into array of word codes (codes seperated by 3 spaces )
+- loop through array of word codes 
+- at each word code split the word code into an array of char codes (seperated by a space)
+- loop through the char array 
+- for each char decode using pre loaded morse dictionary 
+- push this decoded char into a temp array 
+- at the end of word loop push temp array chars into word array dont forget to join them 
+*/ 
+
+
+decodeMorse = function(morseCode){
+ 
+  let wordsArr = [];
+  wordCodesArr = morseCode.split("   "); 
+
+  wordCodesArr.forEach((wordCode, index, arr) => {
+    
+    let tempCharArr = [];
+    let charArr = wordCode.split(' '); 
+    
+    charArr.forEach((char) => {
+      
+        tempCharArr.push(MORSE_CODE[char]);
+    })
+    
+    wordsArr.push(tempCharArr.join(''))
+  })
+  return wordsArr.filter(a => a !== '').join(' ')
+}
+
+/* IMPROVEMENTS 
+- Could have used trim method to remove whitespace from string at the beggining as opposed to at the end with filter method
+- Instead of multiple for loop could have used map method and created a function which uses preloaded dictionary 
+*/
