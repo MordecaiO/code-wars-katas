@@ -26,3 +26,35 @@ digPow(46288, 3) should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688
 
 */
 
+/* Plan 
+-change n into a string and split into indv digits 
+-create var for sum 
+-loop through array of indv digits 
+-change string to num 
+-take num to power of p + i
+-add result to sum 
+- take sum and divide by n to find k
+- if it exists return k else return -1
+*/
+
+function digPow(n, p){
+  let arrNum = n.toString().split(''); 
+  console.log('arrNum', arrNum); 
+  
+  let sum = 0; 
+  
+  arrNum.forEach((number, index) => {
+    
+   let pow = Math.pow(Number(number),(p + index));
+    console.log('pow', pow); 
+    
+    sum += pow ;
+    console.log('sum', sum);
+  })
+  
+  let k = sum / n ; 
+  console.log('k', k);
+  
+  return sum % n === 0 ? k : -1 ; 
+}
+
