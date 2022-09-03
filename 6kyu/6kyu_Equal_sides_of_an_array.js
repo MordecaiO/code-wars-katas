@@ -33,3 +33,63 @@ If you do not find an index that fits these rules, then you will return -1.
 Note:
 If you are given an array with multiple answers, return the lowest correct index.
 */
+
+
+// Index where sum of all previous items and sum of all following items are equal (N)
+// if doesn't exist return -1 
+// can be at index 0 
+// N is not included in sum calculations
+
+/* Plan
+- At each index in the array sum of all prev and following items must be found then compared
+- create return var set to -1; 
+- Loop through the array 
+- find sum of all previous items 
+- if index is 0 sum of prev items is 0 
+- else extract prev values 
+- reduce extracted values to find sum 
+- repeat same process for items past N 
+- if sums are strict equal set return var to current index 
+- return return var
+*/
+
+function findEvenIndex(arr)
+{
+  let returnIndex = -1; 
+  
+  arr.forEach((element, index, array) => {
+    
+    let sumPrev = 0; 
+    let sumNext = 0; 
+    
+   // at first index sumPrev is always 0
+    if (index !== 0){
+      
+      // grab all prev values in arr
+      let arrPrev = array.slice(0,index); 
+      
+      // sum all prev values
+      let sumArrPrev = arrPrev.reduce((prevVal, currVal) => 
+        prevVal + currVal, 0
+      );
+      
+      sumPrev = sumArrPrev; 
+    }
+    
+    // have to slice starting from the next item as start is inclusive
+    let arrNext = array.slice(index +1); 
+    
+    let sumArrNext = arrNext.reduce((prevVal, currVal) => 
+        prevVal + currVal, 0
+      );
+     
+    sumNext = sumArrNext; 
+     
+    // if sums are equal set return index to current index
+    if (sumPrev === sumNext){
+      returnIndex = index; 
+    }
+  })
+  
+  return returnIndex; 
+}
