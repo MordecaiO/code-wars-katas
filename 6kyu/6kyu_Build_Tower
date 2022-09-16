@@ -19,3 +19,33 @@ And a tower with 6 floors looks like this:
   "***********"
 ]
 */
+
+/* Plan
+- create tower array 
+- initialise for loop 
+- < nFloors 
+- we insert the blocks for each floor every interation 
+- we need a general formula for each iteration 
+- two things to worry about spaces and blocks 
+- 3 floors => 2spaces, 1spaces , 0spaces
+- space formula = nFloors - 1 - i 
+- block formula = formula for odd numbers 2n + 1 
+- concat space and block logic 
+*/ 
+
+
+
+function towerBuilder(nFloors) {
+  
+ let tower = []; 
+  
+  for(let i = 0; i < nFloors; i++){
+    tower.push(
+    ' '.repeat(nFloors - 1 - i)
+      + '*'.repeat((2 * i) + 1)
+      + ' '.repeat(nFloors -1 -i)
+    )
+  }
+  console.log('tower', tower)
+  return tower
+}
