@@ -15,3 +15,29 @@ findNb(91716553919377) --> -1
 
 
 */
+
+
+/* Plan
+- Given m (sum of  1 to n where every number is cubed )
+*/
+
+
+
+function findNb(m) {
+    let counter = 0; 
+    let i = 1; 
+  let n = null; 
+  
+ do {
+   counter += Math.pow(i, 3)
+  
+   if(counter === m){
+     n = i; 
+   }
+   
+   i++
+ }
+   while (counter <= m);
+    
+    return n ? n : (-1);
+}
