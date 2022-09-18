@@ -15,3 +15,26 @@ Example: (input --> output)
 "GTAT" --> "CATA"
 */
 
+/* Plan 
+- create key object 
+- split given string into an array 
+- loop through array 
+- map each item to corresponding symbol
+- join array and return string 
+*/
+
+
+function DNAStrand(dna){
+  
+  let key = {A:'T',C:'G',G:'C',T:'A'}; 
+  let dnaArr = dna.split(''); 
+ 
+  let resultArr = dnaArr.map((letter) => {
+    return key[letter]
+  }); 
+
+  
+  let result = resultArr.join(''); 
+
+  return result 
+}
