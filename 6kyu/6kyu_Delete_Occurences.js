@@ -14,3 +14,41 @@ drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times
 With list [20,37,20,21] and number 1, the result would be [20,37,21].
 */
 
+/*Plan
+- create counter obj
+- loop through array 
+- check if item exist in counter obj 
+- if it doesnt create property 
+- set property key to item and value to 0 
+- if it does exist 
+- if value is less than or equal to n add 1 to value 
+- if value is > n 
+- 
+*/
+
+function deleteNth(arr,n){
+  
+  let counter = {};
+  let deleted = [];
+  
+  arr.forEach((num, index) => {
+    console.log('num',num)
+    if(!counter.hasOwnProperty(num)){
+      counter[num] = 1;
+       deleted.push(num)
+    } else {
+      counter[num]++
+      deleted.push(num)
+      if(counter[num] > n) {
+      deleted.pop()
+      }
+    }
+    
+    console.log('deleted',deleted)
+    console.log('arr', arr); 
+    console.log('counter', counter);
+  })
+  
+  return deleted
+  
+}
