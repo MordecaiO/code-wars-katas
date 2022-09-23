@@ -19,3 +19,44 @@ Note
 In case of an empty array return 0. You will not be tested with invalid input (input will always be an array). 
 Order of the face (eyes, nose, mouth) elements will always be the same.
 */ 
+// smiley must contain eyes & smile 
+
+/* Plan
+- 
+*/
+
+
+function countSmileys(arr) { 
+  
+  const isValid = (string) => {
+    
+    if (string.length > 3 || string.length <= 0){
+      return false
+      
+    } else if (string.length === 2){
+      let twoChar = string.split(''); 
+     return (twoChar[0] === ':' || twoChar[0] === ';') && 
+       (twoChar[1] === ')' || twoChar[1] === 'D') ? 
+       true : false
+      
+    } else {
+      let threeChar = string.split('');
+       return (threeChar[0] === ':' || threeChar[0] === ';') && 
+       (threeChar[1] === '-' || threeChar[1] === '~') && 
+         (threeChar[2] === ')' || threeChar[2] === 'D') ?
+      true : false
+    }
+    
+  }
+  
+  let counter = 0; 
+  
+  arr.forEach((smiley) => {
+    if(isValid(smiley) === true){
+      counter++
+    }
+  })
+  
+ 
+ return counter; 
+}
