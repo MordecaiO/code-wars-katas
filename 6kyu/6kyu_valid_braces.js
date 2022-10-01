@@ -17,3 +17,45 @@ Examples
 "[({})](]" =>  False
 
 */
+/*
+- create var to store evaluated braces 
+- create key obj for open braces 
+- loop through given string of braces 
+- if current item is open brace 
+- add to store arrya 
+- if closing brace 
+- the last item added to store must be its corresponding open 
+*/
+
+
+function validBraces(braces){ 
+
+  let store = []; 
+  
+  const key = {
+    '(':')', 
+      '{':'}',
+        '[':']'
+  }
+   
+  for (let i = 0; i < braces.length; i++){
+    
+    let brace = braces[i]; 
+    console.log('brace', brace); 
+    
+    // if item is open brace
+    if(key[brace]){
+      store.push(brace);
+      console.log('store', store);
+    } // if item is close brace
+    else {
+      // check if item pairs with last unmatched open bracket
+      if(brace !== key[store.pop()]){
+        return false 
+      }
+    }
+  }
+ 
+  return store.length == 0
+
+}
