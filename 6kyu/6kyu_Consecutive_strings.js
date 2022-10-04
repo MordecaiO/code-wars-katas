@@ -23,3 +23,23 @@ n being the length of the string array, if n = 0 or k > n or k <= 0 return "" (r
 Note
 consecutive strings : follow one after another without an interruption
 */
+function longestConsec(strarr, k) {
+    const n = strarr.length; 
+   
+  if (n === 0 || k > n || k <=0 ){
+    return "" ; 
+  }
+     
+     let longestWord = ''; 
+  
+  strarr.forEach((word, index, arr) => {
+    let concat = strarr.slice(index, index + k ).join(''); 
+    
+    if (concat.length > longestWord.length){
+      longestWord = concat;
+    }
+   
+  })
+  
+  return longestWord;
+}
