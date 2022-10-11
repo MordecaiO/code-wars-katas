@@ -8,3 +8,36 @@ NOTE: All numbers will be whole numbers greater than 0.
 
 
 */
+/* Plan
+- take num and turn into a string 
+- split into and array 
+- note length of array 
+- loop through array 
+- turn item into int 
+- if int greater than zero 
+- expanded form - item + 0 repeated (length of arr - index - 1) times 
+- push to new arr 
+- join arr with + and space as delimiter 
+*/
+
+
+function expandedForm(num) {
+
+  let expandedFormArr = []; 
+  
+  let numStr = num.toString(); 
+  let numArr = numStr.split(''); 
+  const l = numArr.length; 
+  
+  numArr.forEach((item, index) => {
+    let numItem = Number(item); 
+    if (numItem > 0){
+      let digit = item + '0'.repeat(l - index - 1); 
+      expandedFormArr.push(digit); 
+    }
+  })
+ 
+  let eForm = expandedFormArr.join(' + ');
+  
+  return eForm ; 
+}
