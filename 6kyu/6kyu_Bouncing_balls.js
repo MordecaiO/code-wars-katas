@@ -23,3 +23,26 @@ Examples:
 
 (Condition 2) not fulfilled).
   */
+/* Plan
+- account for invalid inputs 
+- 
+*/ 
+
+
+function bouncingBall(h,  bounce,  window) {
+  
+  if (h < 0 || bounce < 0 || bounce >= 1 || window >= h){
+    return -1
+  }
+  
+  let counter = 0; 
+  
+  for (let i = h; i > window; i*=bounce){
+    
+    counter += 1 ; 
+  if (i * bounce > window){
+    counter += 1 ; 
+  }
+  }
+   return counter ; 
+}
