@@ -19,3 +19,67 @@ When two numbers have the same "weight", let us class them as if they were strin
 
 All numbers in the list are positive numbers and the list can be empty.
 */
+/* Plan
+- account for empty string case 
+- create function give a num as a str returns the sum of the strings indv digits
+- take input string and split into arr of nums as strings 
+- create arr to hold orig num as key and sum of digits as value (obj)
+- loop through arr of nums 
+- create and push obj with key as num & value as sum of indv digits
+- sort arr of obj by key first 
+- this ensures correct order for nums with same indv digit sum value
+- sort arr of obj by value 
+- loop through arr and push key into new arr
+- join new arr 
+*/
+
+function orderWeight(strng) {
+    
+  let arrNums = strng.split(" "); 
+  
+  if(!arrNums.length > 0){
+    return strng;
+  } 
+  
+  const sumIndvDigits = (numberAsString) => {
+    
+    let arr = numberAsString.split(""); 
+    let numArr = arr.map((number) => {
+      return Number(number); 
+    }); 
+    
+    return numArr.reduce((a, b) => a + b, 0);
+  } 
+  
+  let numsAndWeights = []; 
+  
+  arrNums.forEach((numAsString) => {
+    
+    numsAndWeights.push( {"number": numAsString ,"weight": sumIndvDigits(numAsString)} )
+  });
+  
+ // sort using UTF first
+ numsAndWeights.sort((a, b) => {
+  const numberA = a.number 
+  const numberB = b.number 
+  if (numberA < numberB) {
+    return -1;
+  }
+  if (numberA > numberB) {
+    return 1;
+  }
+
+  // numbers must be equal
+  return 0;
+});
+ // sort by weight value next
+  numsAndWeights.sort((a,b) => a.weight - b.weight)
+  
+  let orderedNums = []; 
+  numsAndWeights.forEach((item) => orderedNums.push(item.number)); 
+ 
+  let orderedStr = orderedNums.join(" "); 
+ 
+  return orderedStr; 
+} 
+
