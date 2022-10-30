@@ -11,3 +11,23 @@ input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
 output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
 
 */
+
+function openOrSenior(data){
+  
+  let categoriesList = []; 
+  
+  data.forEach((info) => {
+    
+    let age, handicap; 
+    [age, handicap] = info; 
+    
+   if (age >= 55 && handicap > 7){
+     categoriesList.push('Senior'); 
+   } else {
+     categoriesList.push('Open'); 
+   }
+    
+  })
+   
+  return categoriesList
+}
