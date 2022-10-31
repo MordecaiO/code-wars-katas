@@ -10,3 +10,9 @@ vowelOne( "abceios" ) // "1001110"
 
 vowelOne( "aeiou, abc" ) // "1111100100"
 */
+function vowelOne(s){
+
+  const vowels = 'AEIOUaeiou'; 
+  
+  return s.split('').map(char =>  vowels.includes(char) ? '1' : '0' ).join('');
+}
