@@ -22,3 +22,16 @@ s="aaaxbbbbyyhwawiwjjjwwm"
 printer_error(s) => "8/22"
 
 */
+function printerError(s) {
+  let denominator = s.length; 
+  let numerator = 0; 
+  const key = "abcdefghijklm";
+  
+  s.split("").forEach((color) => {
+    if (!key.includes(color)){
+      numerator++; 
+    }
+  })
+    
+  return `${numerator}/${denominator}`
+}
