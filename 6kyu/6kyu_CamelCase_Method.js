@@ -7,3 +7,18 @@ For instance:
 "hello case".camelCase() => HelloCase
 "camel case word".camelCase() => CamelCaseWord
 */
+
+String.prototype.camelCase=function(){
+ 
+ let s = this.toString(); 
+ let camelString = ""
+ let arrWords = s.split(" "); 
+  
+ arrWords.forEach((word) =>{
+   if (word){
+    camelString += (word[0].toUpperCase() + word.slice(1)); 
+   }
+  })
+  
+  return camelString; 
+}
