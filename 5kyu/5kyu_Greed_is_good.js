@@ -23,3 +23,66 @@ Example scoring
 In some languages, it is possible to mutate the input to the function. This is something that you should never do. 
 If you mutate the input, you will not be able to pass all the tests.
 */
+function score( dice ) {
+  
+  let scoreObj = {}; 
+  // counting value occurences
+  dice.forEach((value) => {
+    
+    if (scoreObj[value]){
+      scoreObj[value]++
+    } else {
+      scoreObj[value] =  1; 
+    }
+  });
+  
+  let score = 0; 
+  
+  // loop to determine scores for occurences > 3 
+  
+  for (let valueScore in scoreObj){
+    
+    let multiplier =  Math.floor(scoreObj[valueScore] / 3); 
+    
+   if (valueScore === '1' && scoreObj[valueScore] >= 3){
+     
+     score+= (1000 * multiplier) ; 
+     scoreObj[valueScore] = scoreObj[valueScore] % 3 ; 
+     
+   } else if (valueScore === '6' && scoreObj[valueScore] >= 3){
+     score+= (600 * multiplier) ; 
+     scoreObj[valueScore] = scoreObj[valueScore] % 3 ; 
+     
+   } else if (valueScore === '5' && scoreObj[valueScore] >= 3){
+     score+= (500 * multiplier) ; 
+     scoreObj[valueScore] = scoreObj[valueScore] % 3 ; 
+     
+   } else if (valueScore === '4' && scoreObj[valueScore] >= 3){
+     score+= (400 * multiplier) ; 
+     scoreObj[valueScore] = scoreObj[valueScore] % 3 ; 
+     
+   } else if (valueScore === '3' && scoreObj[valueScore] >= 3){
+     score+= (300 * multiplier) ; 
+     scoreObj[valueScore] = scoreObj[valueScore] % 3 ; 
+     
+   } else if (valueScore === '2' && scoreObj[valueScore] >= 3){
+     score+= (200 * multiplier) ; 
+     scoreObj[valueScore] = scoreObj[valueScore] % 3 ; 
+     
+   } 
+   }
+  
+  for (let valueScore in scoreObj){
+    
+   if (valueScore === '1' && scoreObj[valueScore] <= 2){ 
+     
+     score += 100 * scoreObj[valueScore];
+   } else if (valueScore === '5' && scoreObj[valueScore] === 1){
+    score += 50;
+   }
+   }  
+  
+  return score ; 
+  
+  }
+  
