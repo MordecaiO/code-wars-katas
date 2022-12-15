@@ -11,3 +11,28 @@ Examples:
 toWeirdCase( "String" );//=> returns "StRiNg"
 toWeirdCase( "Weird string case" );//=> returns "WeIrD StRiNg CaSe"
 */
+
+
+function toWeirdCase(string){
+  
+  const wordToWeirdCase = (word) => {
+    let wcWordArr = [];
+    let wordArr = word.split("");
+    wordArr.forEach((char,index) =>{
+      if (index === 0){
+        wcWordArr.push(char.toUpperCase())
+      } else if (index % 2 === 0){
+        wcWordArr.push(char.toUpperCase())
+      } else {
+        wcWordArr.push(char.toLowerCase())
+      }
+    });
+    
+    return wcWordArr.join("");
+  }
+  
+  let stringArr = string.split(" ").map((word) => {
+   return wordToWeirdCase(word);
+})
+  return stringArr.join(" ");
+}
