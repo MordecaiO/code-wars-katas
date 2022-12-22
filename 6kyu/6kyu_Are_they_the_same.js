@@ -29,3 +29,28 @@ a or b might be nil or null or None or nothing (except in C++, COBOL,
 Crystal, D, Dart, Elixir, Fortran, F#, Haskell, Nim, OCaml, Pascal, Perl, PowerShell, Prolog, PureScript, R, Racket, Rust, Shell, Swift).
 If a or b are nil (or null or None, depending on the language), the problem doesn't make sense so return false.
 */
+
+
+function comp(array1, array2){
+  // if any of input arr are empty return false
+  if (array1 === null || array2 === null) return false ; 
+  
+  // create key obj for non square values arr (arr1) & square values arr (arr2)
+  let key1 = {}; 
+  let key2 = {};
+  // loop through arr1 
+   // if item exists in key obj add 1 to value else create prop with value 1
+  array1.forEach((num) => key1[num] ? key1[num]++ : key1[num] = 1);
+  console.log('key1', key1); 
+  // repeat for arr2 
+  array2.forEach((num) => key2[num] ? key2[num]++ : key2[num] = 1);
+   console.log('key2', key2);
+  // loop through keyobj1 
+  for (let prop in key1){
+     // if the value of the current prop is not equal to the value of the key squared in keyobj2 return false
+    
+   if (key1[prop] !== key2[prop**2]) return false 
+  }
+ 
+   return true 
+}
