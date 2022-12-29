@@ -11,3 +11,26 @@ Invalid characters should be ignored.
 
 parse("iiisdoso") => [ 8, 64 ]
 */
+
+
+// Return the output array, and ignore all non-op characters
+function parse(data){
+  // create var to store num to be parsed 
+  let num = 0; 
+  // create return arr
+  let arr = [];
+  // loop through data
+  data.split("").forEach((command) => {
+    if(command === "i"){ 
+    num++;
+    } else if (command === "d"){
+    num--; 
+    } else if (command === "s"){
+      num = num**2;
+    } else if (command === "o"){
+      arr.push(num); 
+    }
+  })
+ 
+   return arr 
+}
