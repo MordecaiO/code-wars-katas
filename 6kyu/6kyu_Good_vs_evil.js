@@ -39,3 +39,31 @@ Output:
 Return "Battle Result: Good triumphs over Evil" if good wins, "Battle Result: Evil eradicates all trace of Good" if evil wins, or "Battle Result:
 No victor on this battle field" if it ends in a tie.
  */
+
+function goodVsEvil(good, evil){
+  // create key obj for good & evil worth  set key to corresponding index of input Hobbits = 1 ... etc
+  const goodKey = {1: 1, 2: 2, 3: 3, 4: 3, 5: 4, 6: 10}; 
+  const evilKey = {1: 1, 2: 2, 3: 2, 4: 2, 5: 3, 6: 5, 7: 10}; 
+  
+  // create score vars for good & evil worth 
+  let goodScore = 0; 
+  let evilScore = 0; 
+  
+  // loop through each input 
+  // multiply item by character worth (key[index]); 
+  // sum value 
+  good.split(" ").forEach((raceCount, index) => { goodScore += raceCount * goodKey[index + 1]; })
+  console.log('goodScore', goodScore); 
+  evil.split(" ").forEach((raceCount, index) => { evilScore += raceCount * evilKey[index + 1]; })
+  console.log('evilScore', evilScore); 
+  
+  // compare good vs evil score 
+  if (goodScore > evilScore){
+    return 'Battle Result: Good triumphs over Evil';;
+  } else if (evilScore > goodScore){
+    return 'Battle Result: Evil eradicates all trace of Good';
+  } else {
+    return 'Battle Result: No victor on this battle field'
+  }
+}
+
