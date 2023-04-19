@@ -13,3 +13,13 @@ Output: "odd"
 
 Input: [0, -1, -5]
 Output: "even" */
+
+
+function oddOrEven(array) {
+   if(!array.length || (array.length === 1 && array[0] === 0)) return "even" ; 
+  
+  let sum = 0; 
+   array.forEach((num) => (sum+=num)); 
+  
+  return sum % 2 == 0 ? "even" : "odd" ; 
+}
