@@ -10,4 +10,39 @@ findMissing([1, 3, 5, 9, 11]) == 7
 PS: This is a sample question of the facebook engineer challenge on interviewstreet. I found it quite fun to solve on paper using math, derive the algo that way. 
 Have fun! */ 
 
+/*
+   x1 x2 x3 x4  x5   cd = consdiff 
+S = 1  3  5  9  11 
+     d1 d2 d3 d4     d1 = x2 - x1, d2 = x3 -x2 .....
+     
+identify the unique difference, replace with xa + cd (xa < xb)
+case of 3 numbers greater diff should be replaced 
+
+*/
+var findMissing = function (list) {  
+  let num;
+  let arrDiffs = [];
+  let j=1;
+  
+  for (let i=0; i<list.length -1; i++){
+    let diff = list[j] - list[i];
+    arrDiffs.push(diff);
+    j++; 
+  }
+  if (list.length === 3){
+    
+    if (Math.abs(arrDiffs[0]) > Math.abs(arrDiffs[1])){
+      num = list[0] + arrDiffs[1];
+    } else {
+      num = list[1] + arrDiffs[0];
+    }
+  } else {
+    let diffIndex ;
+    arrDiffs.forEach((diff,index,arr)=>{
+      if(arr.indexOf(diff) === arr.lastIndexOf(diff)) diffIndex = index ; 
+    });
+    num = list[diffIndex] + arrDiffs[diffIndex]/2
+  }
+  return num ;
+}
 
