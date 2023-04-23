@@ -15,3 +15,15 @@ The data is given in an array as such:
 
 [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0]
 */
+function dataReverse(data) {
+  let dataArr = []; 
+  for(let i=0; i<data.length; i+=8){
+    dataArr.push(data.slice(i,i+8));
+  }
+  
+  let returnArr = [];
+  dataArr.reverse()
+    .forEach((bit)=>(returnArr.push(...bit)));
+  
+  return returnArr 
+}
