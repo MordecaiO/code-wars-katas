@@ -51,3 +51,28 @@ thirt(1234567) calculates 178, then 87, then 87 and returns 87.
 thirt(321) calculates 48, 48 and returns 48
 
  */
+
+/* 
+- succesive powers of 10 mod (divisor)
+- input num from the right 
+
+*/
+
+function thirt(n) {
+  
+  const helper = (num)=>{
+    let nArr = num.toString().split("");
+    let sequenceArr = []
+    for (let i=0; i< nArr.length; i++){
+      sequenceArr.push(Math.pow(10,i) % 13);
+    } 
+    nArr.reverse();
+    let product =0;
+    for (let j=0; j< nArr.length; j++){
+      product += (nArr[j] * sequenceArr[j]);
+    }
+    if (num === product) return product; 
+    return helper(parseInt(product)) ; 
+  }
+  return helper(n);
+}
