@@ -12,6 +12,5 @@ function reverseWords(str) {
   arrStr.forEach((word)=> {
     arrRevStr.push(word.split("").reverse().join(""))
   })
-  
   return arrRevStr.join(" "); 
 }
