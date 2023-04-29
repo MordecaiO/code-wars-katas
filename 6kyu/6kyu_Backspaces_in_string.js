@@ -10,3 +10,19 @@ Examples
 "#######"       ==>  ""
 ""              ==>  ""
 */
+
+function cleanString(s) {
+  
+  let sArr = s.split(""); 
+  let cleanedArr = []; 
+  
+  sArr.forEach((char)=>{
+    if (char === "#") { 
+      cleanedArr.pop() 
+    } else{
+      cleanedArr.push(char)
+    } 
+  })
+ 
+  return cleanedArr.join("");
+}
