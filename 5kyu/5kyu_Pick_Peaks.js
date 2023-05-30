@@ -18,3 +18,35 @@ please only return the position and value of the beginning of the plateau. For e
 pickPeaks([1, 2, 2, 2, 1]) returns {pos: [1], peaks: [2]} (or equivalent in other languages)
 
 Have fun!*/
+/* A numerical peak in a seq is when a num is greater than its prev and its next item
+- create object which we will return answers in. 
+- loop through numbers / if num is greater than prev & next record index (as pos) & value (as peak)
+- deal with plateau case, if we cant find any peaks 
+
+*/ 
+
+
+function pickPeaks(arr){
+  let posArr=[], peakArr=[]; 
+  
+  let i=1, j; 
+  while (i<arr.length){
+    let curr=arr[i], next=arr[i+1], prev=arr[i-1]; 
+    if(curr>prev && next<curr){
+      posArr.push(i);
+      peakArr.push(arr[i]); 
+    } else if(curr>prev && next===curr){
+      let j=i; 
+      while(arr[j]===curr){
+        j++;
+      }
+       console.log("j",j);
+      if(arr[j]<arr[i]){
+      posArr.push(i);
+      peakArr.push(arr[i]); 
+      }
+    }
+      i++
+  }
+  return { pos: posArr, peaks: peakArr }
+}
