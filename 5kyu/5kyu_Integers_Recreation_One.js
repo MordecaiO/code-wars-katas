@@ -13,26 +13,23 @@ list_squared(42, 250) --> [[42, 2500], [246, 84100]]
 The form of the examples may change according to the language, see "Sample Tests".*/
 
 function listSquared(m, n) {
-   let returnArr = [];
+    
+  const findDivisors = (num) => {
+    let divisors = []; 
+    for(let i=1; i<=num; i++){
+      if(num % i === 0) divisors.push(i); 
+    }
+    return divisors
+  } 
   
-   for(let i=m; i<=n; i++){
-     let divisorArr = [];
-     for(let j=0; j<=Math.sqrt(i); j++){
-      // a number cannot have any divisors greater than the sqrt of that number
-       if(i % j === 0) {
-         divisorArr.push(Math.pow(j,2));
-         if(i/j != j) 
-           divisorArr.push(Math.pow(i/j,2));
-       } 
-     }
-     
-     let sumDivisorArr = 1;
-     if (divisorArr.length>1){
-       sumDivisorArr = divisorArr.reduce((sum,currVal)=> sum+currVal,0);
-     }
-     if (Number.isInteger(Math.sqrt(sumDivisorArr))) {
-       returnArr.push([i, sumDivisorArr])
-     }
-   }
+  let returnArr = []; 
+  for(let i=m; i<=n; i++){
+    let sum = findDivisors(i).reduce((acc,val)=> acc + (val * val));
+    let sumIsSquare = Number.isInteger(Math.sqrt(sum))
+    
+    if(sumIsSquare) returnArr.push([i,sum]);
+  }
+    
   return returnArr
 }
+
