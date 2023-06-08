@@ -25,3 +25,36 @@ If an array with one element is folded, it stays as the same array.
 The input array should not be modified!
 Have fun coding it and please don't forget to vote and rank this kata! :-)
 I have created other katas. Have a look if you like coding and challenges.*/
+
+function foldArray(array, runs)
+{
+  const array1 = [...array];
+  const foldNums = (arr,steps) =>  {
+    if (steps === 0) return arr ; 
+    let returnArr = [];
+    // if even amount of items in arr
+    if(arr.length % 2 === 0){
+      let left = arr.slice(0, arr.length/2); 
+      let right = arr.slice(arr.length/2).reverse(); 
+     
+      for (let i=0; i<arr.length/2; i++){
+        returnArr.push(left[i] + right[i]); 
+      }
+      
+      } else { // odd amount of items 
+        let index = Math.floor(arr.length/2); 
+        let middleNum = arr.splice(index,1); 
+        let left = arr.slice(0, arr.length/2); 
+        let right = arr.slice(arr.length/2).reverse(); 
+      
+        for (let i=0; i<arr.length/2; i++){
+          returnArr.push(left[i] + right[i]); 
+      }
+        returnArr.push(...middleNum)
+    }
+    
+    return foldNums(returnArr, steps - 1 )
+  }
+  
+    return foldNums(array1, runs)
+}
