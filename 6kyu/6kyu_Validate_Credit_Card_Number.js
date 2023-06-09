@@ -28,3 +28,29 @@ Sum all of the final digits:
 Finally, take that sum and divide it by 10. If the remainder equals zero, the original credit card number is valid.
 
 18 (modulus) 10 ==> 8 , which is not equal to 0, so this is not a valid credit card number*/
+function validate(n){
+  
+let arrN = ("" + n).split(""); 
+  
+  let algo = (num,i,arr) => {
+    
+    if(arr.length % 2 != 0){
+      if(i % 2 === 0 || i == 0){
+        return Number(num); 
+      } else { // 
+        let double = Number(num) * 2 
+      return double > 9 ? (double - 9) : double
+      }
+      } else { 
+        if(i % 2 != 0){
+          return Number(num);
+      } else { 
+        let double = Number(num) * 2 
+      return double > 9 ? (double - 9) : double
+      }
+    }
+  }
+  let result = arrN.map(algo)
+                .reduce((acc,val)=> acc + val) 
+  return result % 10 == 0 
+}
