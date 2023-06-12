@@ -64,3 +64,34 @@ moves = ['right', 'down', 'left', 'left', 'left', 'left', 'right']
 Result:
 
 ['E.Honda', 'Chun Li', 'Ken', 'M.Bison', 'Sagat', 'Dhalsim', 'Sagat']*/
+
+
+function streetFighterSelection(fighters, position, moves){
+ 
+  let hovered = [];
+  let [yArrIndex, xArrIndex] = position; 
+  moves.forEach((move,index,arr) => {
+    
+  if(move === "up" && yArrIndex == 1){
+    yArrIndex=0; 
+    hovered.push(fighters[yArrIndex][xArrIndex]);
+    return
+  } else if (move === "down" && yArrIndex == 0){
+    yArrIndex=1; 
+    hovered.push(fighters[yArrIndex][xArrIndex])
+    return
+  }
+  if(move === "left"){
+    xArrIndex > 0 ? xArrIndex -= 1 : xArrIndex = 5; 
+    hovered.push(fighters[yArrIndex][xArrIndex])
+    return
+  } else if (move === "right"){
+    xArrIndex < 5 ? xArrIndex += 1 : xArrIndex = 0
+    hovered.push(fighters[yArrIndex][xArrIndex]);
+    return
+  }
+    hovered.push(fighters[yArrIndex][xArrIndex]);
+  })
+ 
+  return hovered ; 
+}
