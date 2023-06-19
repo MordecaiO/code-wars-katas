@@ -6,3 +6,9 @@ For example: (Input --> Output)
 10 --> 1
 99 --> 18
 -32 --> 5*/
+
+export function sumDigits(n: number): number {
+  
+    return (Math.abs(n)+"").split("").reduce((a ,b ) => (+a) + (+b), 0)
+
+}
