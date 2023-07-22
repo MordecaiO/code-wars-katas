@@ -15,3 +15,22 @@ The function perimeter has for parameter n where n + 1 is the number of squares
 
 perimeter(5)  should return 80
 perimeter(7)  should return 216*/
+
+export const perimeter = (n:number):number => {
+  // your code
+  
+  let arr : number[] = [1,1]; 
+  let count : number = arr.length; 
+  let x1 : number = 1; 
+  let x2: number = 0; 
+  while (count < n+1){
+    arr.push(arr[x1] + arr[x2]); 
+    count = arr.length; 
+    x1++;
+    x2++; 
+  }
+  
+ let sum : number = arr.reduce((acc, curr) => ( acc + curr  ));
+                                                      
+  return sum * 4
+}
