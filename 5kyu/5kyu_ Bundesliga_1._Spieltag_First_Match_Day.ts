@@ -45,4 +45,59 @@ You do not have to do a check for the input values. It will always be an array o
 
 */
 
+export function table(results: string[]): string {
+  
+  let teamsArr : {team : string, results: number[], gd: number[], p: number}[] = [];
+  // create record for each team 
+  results.forEach((fixture) => {
+     let spaceIdx : number  = fixture.indexOf(" "); 
+     let teams = fixture.slice(spaceIdx+1); 
+     let indvTeams = teams.split(" - "); 
+     const [team1,team2] = indvTeams ; 
+     teamsArr.push({team : team1, results: [0,0,0], gd:[0,0] , p: 0}, {team : team2, results: [0,0,0], gd:[0,0] , p: 0});
+     
+  }
+  
+  results.forEach((fixture)=>{
+     let spaceIdx : number  = fixture.indexOf(" "); 
+     let teams = fixture.slice(spaceIdx+1); 
+     let indvTeams = teams.split(" - "); 
+     let score = fixture.slice(0, spaceIdx).split(":").map(x => parseInt(x)) 
+     console.log("score",score);
+    if( isNaN(score[0]) ) return ; // 
+    const [team1, team2] = indvTeams ;
+    const [team1Score, team2Score] = score ; 
+    let team1Idx = teamsArr.findIndex(x => x.team == team1); 
+    let team2Idx = teamsArr.findIndex(x => x.team == team2); 
+    // update results, gd 
+     
+    if (team1Score > team2Score){
+      // add win and loss to teams results record 
+      teamsArr[team1Idx].results[0] += 1 
+      teamsArr[team2Idx].results[2] += 1 
+     
+    } else if (team2Score > team1Score){
+      // add win and loss to teams results record 
+      teamsArr[team1Idx].results[2] += 1 
+      teamsArr[team2Idx].results[0] += 1
+    } else {
+      // add win and loss to teams results record 
+      teamsArr[team1Idx].results[1] += 1 
+      teamsArr[team2Idx].results[1] += 1
+    } 
+    
+     // add goal difference "gd"
+      teamsArr[team1Idx].gd[0] += team1Score;
+      teamsArr[team1Idx].gd[1] += team2Score;
+      teamsArr[team2Idx].gd[0] += team2Score;
+      teamsArr[team2Idx].gd[1] += team1Score;
+    
+     // update games played "p"
+    teamsArr[team1Idx].p += 1;
+    teamsArr[team2Idx].p += 1;
+  })
+  console.log("teamsArr",teamsArr)
+  return "";
+}
+
 
