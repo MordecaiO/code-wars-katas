@@ -50,20 +50,21 @@ export function table(results: string[]): string {
   let teamsArr : {team : string, results: number[], gd: number[], p: number}[] = [];
   // create record for each team 
   results.forEach((fixture) => {
+    
      let spaceIdx : number  = fixture.indexOf(" "); 
      let teams = fixture.slice(spaceIdx+1); 
      let indvTeams = teams.split(" - "); 
      const [team1,team2] = indvTeams ; 
      teamsArr.push({team : team1, results: [0,0,0], gd:[0,0] , p: 0}, {team : team2, results: [0,0,0], gd:[0,0] , p: 0});
      
-  }
+  })
+  
   
   results.forEach((fixture)=>{
      let spaceIdx : number  = fixture.indexOf(" "); 
      let teams = fixture.slice(spaceIdx+1); 
      let indvTeams = teams.split(" - "); 
      let score = fixture.slice(0, spaceIdx).split(":").map(x => parseInt(x)) 
-     console.log("score",score);
     if( isNaN(score[0]) ) return ; // 
     const [team1, team2] = indvTeams ;
     const [team1Score, team2Score] = score ; 
@@ -75,15 +76,21 @@ export function table(results: string[]): string {
       // add win and loss to teams results record 
       teamsArr[team1Idx].results[0] += 1 
       teamsArr[team2Idx].results[2] += 1 
-     
+      // add points to winning team 
+      teamsArr[team1Idx].p += 3;
     } else if (team2Score > team1Score){
       // add win and loss to teams results record 
       teamsArr[team1Idx].results[2] += 1 
       teamsArr[team2Idx].results[0] += 1
+      // add points to winning team 
+       teamsArr[team2Idx].p += 3;
     } else {
-      // add win and loss to teams results record 
+      // add draw to both teams results record 
       teamsArr[team1Idx].results[1] += 1 
       teamsArr[team2Idx].results[1] += 1
+      // add 1 point to both teams 
+      teamsArr[team1Idx].p += 1;
+      teamsArr[team2Idx].p += 1;
     } 
     
      // add goal difference "gd"
@@ -92,12 +99,27 @@ export function table(results: string[]): string {
       teamsArr[team2Idx].gd[0] += team2Score;
       teamsArr[team2Idx].gd[1] += team1Score;
     
-     // update games played "p"
-    teamsArr[team1Idx].p += 1;
-    teamsArr[team2Idx].p += 1;
+     // update points "p"
+    
   })
-  console.log("teamsArr",teamsArr)
-  return "";
+  
+  
+  teamsArr.sort((a,b) => b.p - a.p || (b.gd[0] - b.gd[1]) - (a.gd[0] - a.gd[1]) || (b.gd[0] + b.gd[1]) - (a.gd[0] + a.gd[1]) || a.team.toLowerCase().localeCompare(b.team.toLowerCase()) )
+  
+  let pos = 0; 
+  let prevScoreId = "";
+  let table = teamsArr.map(({team, results, gd, p},i) => {
+    let [won, drawn, lost] = results  
+    let [gdFor, gdAgainst] = gd 
+    let gp = won === 0 && drawn === 0 && lost === 0 ? 0 : 1; 
+    let scoreId = `${gdFor}:${gdAgainst}  ${p}`; 
+    pos = (scoreId === prevScoreId ? pos : i+1);
+    prevScoreId = scoreId 
+    return `${pos.toString().padStart(2)}. ${team.padEnd(30)}${gp}  ${won}  ${drawn}  ${lost}  ${scoreId}` 
+    
+  })
+  .join("\n")
+  
+  
+  return table;
 }
-
-
