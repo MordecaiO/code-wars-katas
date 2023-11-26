@@ -12,3 +12,22 @@ Test examples:
 "EBG13 rknzcyr." -> "ROT13 example."
 
 "This is my first ROT13 excercise!" -> "Guvf vf zl svefg EBG13 rkprepvfr!"*/
+
+export function rot13(str: string): string {
+const dictionary : {[index: string] :string} = {};
+    
+      const nums : number[]  = Array.from(Array(26)).map( (e,i) => (i+65))
+     
+      const alphabets : string[] = nums.map((x) => (String.fromCharCode(x)))
+      
+      let strArr : string[] = str.split(""); 
+      const decArr  = strArr.map((char)=>{
+          const regex = new RegExp(("[A-Za-z]"))
+        if (regex.test(char)){
+          console.log(char)
+        }
+      })
+       
+      
+  return '';
+}
