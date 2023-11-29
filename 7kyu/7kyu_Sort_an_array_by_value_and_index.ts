@@ -17,3 +17,12 @@ Product of value and index:
 
 Output: 2, 3, 4, 23, 5
 */
+
+export function sortByValueAndIndex(array:number[]) : number[] {
+  let returnArr : number[] = []
+  let obj : {name : number, value: number}[] = []
+  array.forEach((num, index) => obj.push( {name: num, value : num * (index + 1) }))
+  obj.sort((a,b)=> a.value - b.value)
+  obj.forEach( (x)=> returnArr.push(x.name))
+  return returnArr;
+}
