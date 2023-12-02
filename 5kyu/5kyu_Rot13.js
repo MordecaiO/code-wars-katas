@@ -8,6 +8,18 @@ Only letters from the latin/english alphabet should be shifted, like in the orig
 
 */
 
+/* plan 
+- create key using input and output corresponding strings 
+- create return arr 
+- split message into array 
+- loop through array 
+- if item is present in input 
+- find index of item in input 
+- use index to push item in output to return arr
+- if item not present in input push item to return array 
+- join return array and return 
+
+*/
 
 
 function rot13(message){
