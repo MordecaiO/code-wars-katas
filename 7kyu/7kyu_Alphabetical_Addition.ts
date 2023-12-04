@@ -1,5 +1,6 @@
 
-/*Your task is to add up letters to one letter.
+/*
+Your task is to add up letters to one letter.
 
 The function will be given a variable amount of arguments, each one being a letter to add.
 
@@ -13,4 +14,5 @@ addLetters('a', 'b') = 'c'
 addLetters('z') = 'z'
 addLetters('z', 'a') = 'a'
 addLetters('y', 'c', 'b') = 'd' // notice the letters overflowing
-addLetters() = 'z'*/
+addLetters() = 'z'
+*/
