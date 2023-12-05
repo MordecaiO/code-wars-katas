@@ -17,3 +17,10 @@ Once you have completed this kata, a slightly more challenging take on the idea 
 
 
 */
+
+export function spoonerize(words: string): string {
+
+  const [w1, w2] = words.split(" ");
+ 
+  return w2.slice(0,1) + w1.slice(1) + " " + w1.slice(0,1) + w2.slice(1)
+}
