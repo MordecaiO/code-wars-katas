@@ -22,7 +22,6 @@ where A, B, C, W are the categories, 20 is the sum of the unique book of categor
 50 corresponding to "CDXEF" and 0 to category 'W' since there are no code beginning with W.
 
 If L or M are empty return string is "" (Clojure/Racket/Prolog should return an empty array/list instead).
-
 */
 export const stockList = (listOfArt:string[], listOfCat:string[]):string => {
 
