@@ -13,3 +13,19 @@ A space has a value of zero, while letters have a value equal to their position 
 
 So, A = 1, B = 2, etc., through Z = 26. Here are example Quicksum calculations for the packets "ACM" and "A C M":
 */
+
+function quicksum(packet){
+  if ( packet.match(/[^A-Z\s]/) ) return 0 
+  let packetArr = packet.split(""); 
+  let sum = 0; 
+  for(let i=0; i<=packetArr.length-1; i++){
+    let char = packetArr[i]; 
+    if(char === " "){
+      continue
+    } else { 
+     let value = (char.toLowerCase().charCodeAt() -96) * (i+1) 
+     sum += value 
+    }
+  }
+  return sum 
+}
