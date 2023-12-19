@@ -14,3 +14,27 @@ Not all paths can be made simpler. The path ["NORTH", "WEST", "SOUTH", "EAST"] i
 "NORTH" and "WEST", "WEST" and "SOUTH", "SOUTH" and "EAST" are not directly opposite of each other and can't become such. Hence the result path is itself : ["NORTH", "WEST", "SOUTH", "EAST"].
 if you want to translate, please ask before translating.
 */
+
+export function dirReduc(arr: string[]): string[] {
+  // all coordinates must be unique / (x,y) 
+  let currPosition : {x:number, y:number} = {x:0, y:0}
+  let journeyArr : number[][] = []; 
+   console.log("arr",arr)
+  // map journey steps 
+  arr.forEach((dir)=>{
+   if(dir === "NORTH"){
+     currPosition.y += 1; 
+   } else if(dir === "SOUTH"){
+     currPosition.y += -1;
+   } else if(dir === "EAST"){
+     currPosition.x += 1;
+   } else {
+     currPosition.x += -1;
+   }
+    journeyArr.push([currPosition.x, currPosition.y])
+  })
+  
+  
+  return [""]
+}
+  
