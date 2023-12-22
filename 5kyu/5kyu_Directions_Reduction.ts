@@ -16,25 +16,27 @@ if you want to translate, please ask before translating.
 */
 
 export function dirReduc(arr: string[]): string[] {
-  // all coordinates must be unique / (x,y) 
-  let currPosition : {x:number, y:number} = {x:0, y:0}
-  let journeyArr : number[][] = []; 
-   console.log("arr",arr)
-  // map journey steps 
-  arr.forEach((dir)=>{
-   if(dir === "NORTH"){
-     currPosition.y += 1; 
-   } else if(dir === "SOUTH"){
-     currPosition.y += -1;
-   } else if(dir === "EAST"){
-     currPosition.x += 1;
-   } else {
-     currPosition.x += -1;
-   }
-    journeyArr.push([currPosition.x, currPosition.y])
-  })
-  
-  
-  return [""]
+ let pair : {[index:string]: string} = {"NORTH": "SOUTH", "SOUTH": "NORTH", "EAST": "WEST", "WEST": "EAST",}
+  const reduce = (arr: string[]) : string[] => {
+    let reducableEls = arr.filter( dir => arr.includes(pair[dir]) )                                           
+    if(reducableEls.length === 0) return arr 
+    let start : number = 0 ; 
+    
+    for(let i=0; i<arr.length-1; i++){
+      let curr = arr[i]; 
+      let next = arr[i+1];
+      if(next === pair[curr]){
+         start = i ; 
+         break
+      } 
+      if (i=== arr.length -2) return arr 
+    }
+    let arrCopy = [...arr]
+    arrCopy.splice(start, 2)
+    return reduce(arrCopy)
+  }
+  let reducedArr = reduce(arr)
+  return reducedArr
 }
+
   
