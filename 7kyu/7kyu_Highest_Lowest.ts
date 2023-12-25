@@ -11,3 +11,12 @@ All numbers are valid Int32, no need to validate them.
 There will always be at least one number in the input string.
 Output string must be two numbers separated by a single space, and highest number is first.
 */
+
+export class Kata {
+  static highAndLow(numbers: string): string {
+    const numbersArr = numbers.split(' ').map(x => parseInt(x))
+    let maxNum = Math.max(...numbersArr)
+    let minNum = Math.min(...numbersArr)
+    return  numbers.length > 1 ? `${maxNum} ${minNum}` : maxNum.toString()
+  }
+}
