@@ -24,19 +24,22 @@ where A, B, C, W are the categories, 20 is the sum of the unique book of categor
 If L or M are empty return string is "" (Clojure/Racket/Prolog should return an empty array/list instead).
 */
 export const stockList = (listOfArt:string[], listOfCat:string[]):string => {
-
-  const tally : {[index:string] : number } = {}; 
+  if(listOfArt.length == 0 || listOfCat.length == 0) return ""
+  let tallyOfCat : {[index:string]: number} = {}; 
+  listOfCat.forEach(cat => tallyOfCat[cat] = 0)
   listOfArt.forEach((book)=>{
-    let category = book[0]; 
-    let stockCount : number = 0; 
-    let stockCountArr = book.match(/[0-9]/g)
-    if(stockCountArr) stockCount = parseInt(stockCountArr.join(""))
-    tally[category] ? tally[category] += stockCount : tally[category] = stockCount 
+    const cat:string = book[0]; 
+    const numStartIndex: number = book.indexOf(" ") + 1 
+    const num : number = parseInt(book.slice(numStartIndex))
+    if(tallyOfCat[cat] != null) tallyOfCat[cat] += num
+})
+  let stockCountArr : string[]= listOfCat.map((cat) =>{
+    return `(${cat} : ${tallyOfCat[cat]})`
   })
+  let stockCountStr : string = stockCountArr.join(" - ")
+  return stockCountStr
 
-  const valuesArr = Object.values(tally)
-  if (valuesArr.length == 0) return ""
-  
+}
   let results = listOfCat.map((category)=>{
    return tally[category] ? `(${category} : ${tally[category]})` : `(${category} : 0)`
   })
