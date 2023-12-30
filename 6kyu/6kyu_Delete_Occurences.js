@@ -44,9 +44,6 @@ function deleteNth(arr,n){
       }
     }
     
-    console.log('deleted',deleted)
-    console.log('arr', arr); 
-    console.log('counter', counter);
   })
   
   return deleted
