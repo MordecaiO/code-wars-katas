@@ -55,3 +55,7 @@ Consider the following solution:
 Summing the differences between left and right wing:
 (17-17)+(15-14)+(8-7)+(7-5)+(4-4) = 4
 The right wing is nearly as steep as the right one.*/
+
+export function makeValley(arr:number[]):number[] {
+return []
+}
