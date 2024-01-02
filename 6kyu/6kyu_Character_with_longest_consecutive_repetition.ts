@@ -8,3 +8,7 @@ For empty string return:
 
 ["", 0]
 */
+export function longestRepetition (text: string): [string, number] {
+  
+  return ['',-1]
+}
