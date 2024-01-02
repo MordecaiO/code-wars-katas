@@ -9,6 +9,11 @@ For empty string return:
 ["", 0]
 */
 export function longestRepetition (text: string): [string, number] {
-  
-  return ['',-1]
+  let matchesArr = text.match(/([a-z0-9])\1*/g)
+  let greatestLength : [string, number] = ["", 0]
+  if (!matchesArr) return greatestLength 
+  matchesArr.forEach((charGroup)=>{
+    if(charGroup.length > greatestLength[1]) greatestLength = [charGroup[0], charGroup.length]; 
+  })
+  return greatestLength
 }
