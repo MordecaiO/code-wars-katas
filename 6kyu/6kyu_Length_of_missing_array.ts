@@ -15,6 +15,13 @@ When an array in the array is null or empty, the method should return 0 too!
 There will always be a missing element and its length will be always between the given arrays.
 */
 export function getLengthOfMissingArray(arrayOfArrays:any[]):number {
-  // your code here
-  return 0
+  if (arrayOfArrays.length === 0 || arrayOfArrays.some((arr)=> arr.length === 0)) return 0 
+  let sortedArrOfArrays : any[] = [...arrayOfArrays].sort((a,b) => a.length - b.length )
+  let missingLen : number = 0; 
+  for(let i=0; i<arrayOfArrays.length-1; i++){
+    let currElLen = sortedArrOfArrays[i].length;
+    let nextElLen = sortedArrOfArrays[i+1].length; 
+    if(nextElLen != currElLen + 1) missingLen = currElLen + 1 ; 
+  }
+  return missingLen
 }
