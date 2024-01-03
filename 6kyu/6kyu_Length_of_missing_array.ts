@@ -14,3 +14,7 @@ If the array of arrays is null/nil or empty, the method should return 0.
 When an array in the array is null or empty, the method should return 0 too!
 There will always be a missing element and its length will be always between the given arrays.
 */
+export function getLengthOfMissingArray(arrayOfArrays:any[]):number {
+  // your code here
+  return 0
+}
