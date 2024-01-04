@@ -18,5 +18,20 @@ abbreviate("elephant-rides are really fun!")
 //                     "-"      " "    " "     " "     "!"
 === "e6t-r3s are r4y fun!"*/
 export function abbreviate(str: string): string {
-  return ""
+  let abbreviatedStr : string = ""; 
+  let matches : RegExpMatchArray | null = str.match(/(\w+)|(.)/g)
+  if(matches != null){
+   let abbreviatedMatches : (string | undefined)[] = matches.map((match) => {
+    if(match.length >= 4){
+      let middleLength : number = match.slice(1, match.length - 1).length
+       let firstChar : string = match[0]; 
+        let lastChar : string = match[match.length - 1]; 
+      return firstChar + middleLength.toString() + lastChar
+    } else {
+      return match
+    }
+  })
+    abbreviatedStr = abbreviatedMatches.join("")
+  }
+  return abbreviatedStr
 }
