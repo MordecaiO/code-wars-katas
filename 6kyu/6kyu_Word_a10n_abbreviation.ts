@@ -17,3 +17,6 @@ abbreviate("elephant-rides are really fun!")
 // all non-word characters (*) remain in place
 //                     "-"      " "    " "     " "     "!"
 === "e6t-r3s are r4y fun!"*/
+export function abbreviate(str: string): string {
+  return ""
+}
