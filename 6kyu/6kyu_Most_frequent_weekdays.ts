@@ -17,3 +17,8 @@ Examples (input -> output):
 * 2185 -> ['Saturday']
 * 2860 -> ['Thursday', 'Friday']
 */
+
+/*
+For every common year DoW start day of the year increases by 1 day, for every leap year DoW increases by 2 days
+Calculate DoW year begins on , determine whether a leap year or not and calculate how many times days are included in cycle of 52 or 53 weeks 
+*/
