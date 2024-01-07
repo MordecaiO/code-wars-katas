@@ -10,5 +10,9 @@ Examples (input --> output)
 Note you should only return a number, the count of divisors. The numbers between parentheses are shown only for you to see which numbers are counted in each case.*/
 
 export function divisors(n: number) {
-  return 0
+  let divisorCount : number = 0 ; 
+  for(let i=1; i<=n; i++){
+    if(n%i === 0) divisorCount++
+  }
+  return divisorCount
 }
