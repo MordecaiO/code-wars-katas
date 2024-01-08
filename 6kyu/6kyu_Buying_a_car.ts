@@ -34,3 +34,7 @@ by chance from the start, the value of the old car is bigger than the value of t
 
 nbMonths(12000, 8000, 1000, 1.5) should return [0, 4000]
 nbMonths(8000, 8000, 1000, 1.5) should return [0, 0]*/
+
+export function nbMonths(startPriceOld: number, startPriceNew: number, savingperMonth: number, percentLossByMonth: number): number[] {
+  // your code
+}
