@@ -36,5 +36,24 @@ nbMonths(12000, 8000, 1000, 1.5) should return [0, 4000]
 nbMonths(8000, 8000, 1000, 1.5) should return [0, 0]*/
 
 export function nbMonths(startPriceOld: number, startPriceNew: number, savingperMonth: number, percentLossByMonth: number): number[] {
-  // your code
+  let r : number = percentLossByMonth/100;
+  let k : number = 0.005; 
+  let currNCP : number = startPriceNew ;
+  let currOCP : number = startPriceOld ; 
+  let months : number = 0; 
+  let extraMoney : number = startPriceOld  - startPriceNew; 
+  
+  while(startPriceOld < startPriceNew){
+    if(months%2===0 && months != 0) r+=k 
+    if(months !=0){
+    currNCP  = currNCP - (currNCP * r) 
+    currOCP  = currOCP - (currOCP * r)
+    }
+    let totMoney : number = currOCP + (savingperMonth*months)  
+     extraMoney  = totMoney - currNCP ; 
+    if (totMoney > currNCP) break 
+    months++
+    }
+  return [months,Math.round(extraMoney)]
+  
 }
