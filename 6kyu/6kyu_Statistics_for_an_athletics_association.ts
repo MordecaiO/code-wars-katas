@@ -26,5 +26,50 @@ of the form: "Range: hh|mm|ss Average: hh|mm|ss Median: hh|mm|ss"`
 where hh, mm, ss are integers (represented by strings) with each 2 digits.*/
 
 export const stat = (s:string): string => {
- return ""
+  const reduceStat = (stat:string): number => {
+    let reducedStat = stat.split("|")
+    .map((str,index)=>{
+      if(index===0){
+        return parseInt(str,10)*3600
+    } else if(index===1) {
+        return parseInt(str,10)*60
+    } else {
+        return parseInt(str,10)
+      }
+      })
+    .reduce((acc,curr) => acc + curr)     
+    return reducedStat
+  }
+  
+  const unReduceStat = (statVal:number): string => {
+    const hours = Math.floor(statVal/3600).toString().padStart(2,"0");
+    const mins = Math.floor((statVal%3600)/60).toString().padStart(2,"0"); 
+    const secs = Math.floor((statVal%3600)%60).toString().padStart(2,"0");
+    let unReducedStat : string = `${hours}|${mins}|${secs}`
+    return unReducedStat
+  }
+  
+  let statsArr : string[] = s.split(", ")
+  let sumStats = statsArr.map((stat) => reduceStat(stat))
+  .reduce((acc:number,curr:number) => acc + curr)
+  const average = unReduceStat(sumStats/statsArr.length)
+  
+  statsArr.sort((a,b)=> reduceStat(b) - reduceStat(a))
+  let range = unReduceStat(
+  reduceStat(statsArr[0]) - reduceStat(statsArr[statsArr.length-1]))
+ 
+  let median = statsArr[(statsArr.length-1)/2]
+  if (statsArr.length%2===0){
+    let indexA = (statsArr.length)/2
+    let indexB = indexA - 1 
+    let A = statsArr[indexA] 
+    let B = statsArr[indexB] 
+    let sum = reduceStat(A) + reduceStat(B)
+    median = unReduceStat(sum/2)  
+  } else {
+    median = unReduceStat(reduceStat(median))
+  }
+  
+  return s != "" ? `Range: ${range} Average: ${average} Median: ${median}` :
+  ""
 }
