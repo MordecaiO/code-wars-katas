@@ -24,3 +24,7 @@ Your task is to return a string giving these 3 values. For the example given abo
 of the form: "Range: hh|mm|ss Average: hh|mm|ss Median: hh|mm|ss"`
 
 where hh, mm, ss are integers (represented by strings) with each 2 digits.*/
+
+export const stat = (s:string): string => {
+ return ""
+}
