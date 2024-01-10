@@ -27,3 +27,9 @@ matrixAddition(
     [6, 4, 4],
     [2, 2, 4] ]
 */
+
+type matrix = number[][];
+export function matrixAddition(a: matrix, b: matrix): matrix {
+  
+  return [[0,0],[0,0]]
+}
