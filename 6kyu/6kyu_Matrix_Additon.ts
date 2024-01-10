@@ -30,6 +30,10 @@ matrixAddition(
 
 type matrix = number[][];
 export function matrixAddition(a: matrix, b: matrix): matrix {
-  
-  return [[0,0],[0,0]]
+  let newMatrix : matrix = a.map((innerArr,innerIndex)=>{
+    return innerArr.map((num,numIndex)=>{
+      return num + b[innerIndex][numIndex]
+    })
+  })
+  return newMatrix;
 }
