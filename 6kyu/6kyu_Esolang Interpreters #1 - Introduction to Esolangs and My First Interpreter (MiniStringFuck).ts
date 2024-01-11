@@ -34,3 +34,8 @@ The memory cell in MiniStringFuck only ever contains a single integer value - th
 If you are stuck as to how to interpret the string as a program, try thinking of strings as an array of characters. Try looping through the "program" like you would an array
 Writing an interpreter for an Esolang can sometimes be quite confusing! 
 It never hurts to add a few comments in your interpreter as you implement it to remind yourself of what is happening within the interpreter at every stage*/
+
+
+export function myFirstInterpreter(code: string):string {
+  return ""
+}
