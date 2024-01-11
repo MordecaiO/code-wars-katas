@@ -37,5 +37,22 @@ It never hurts to add a few comments in your interpreter as you implement it to 
 
 
 export function myFirstInterpreter(code: string):string {
-  return ""
+  let valueIdxArr : number[] = []; 
+ // H=72 e=102 l=108 o=111 space=32 ,=44 W=87 r=114 d=100
+   let i=0;
+   let j=0;
+   while(i<code.length){
+     if(code[i] === "+") j++
+     if(code[i] === "."){
+       let value = j ; 
+       if (value >= 256){
+         let relValue = (value%256)
+         value = relValue
+       }
+       valueIdxArr.push(value)
+     }
+     i++
+  }
+  let charArr = valueIdxArr.map(x => String.fromCharCode(x))
+  return charArr.join("")
 }
