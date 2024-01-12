@@ -77,7 +77,6 @@ export function mazeRunner(maze:number[][], directions:string[]): string{
       break;   
     }
     
-    console.log("returnStr", returnStr)
    
   }
   return returnStr
