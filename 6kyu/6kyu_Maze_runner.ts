@@ -38,46 +38,18 @@ Good luck, and stay safe!
 */
 
 export function mazeRunner(maze:number[][], directions:string[]): string{
-  const start_y : number = maze.findIndex(x => x.includes(2))
-  const start_x : number = maze[start_y].findIndex(x => x == 2)
-  let coordinates : number[] = [start_y, start_x]
-  let returnStr : string = "Lost"
+  let y : number = maze.findIndex(x => x.includes(2))
+  let x : number = maze[y].findIndex(x => x == 2)
   
-  for(let i=0; i<directions.length; i++){
-    let dir : string = directions[i]; 
-    switch(dir) {
-  case "N":
-    coordinates[0] -=1 
-    break;
-  case "S":
-   coordinates[0] +=1 
-    break;
-  case "E":
-   coordinates[1] +=1 
-    break;      
-  case "W":
-   coordinates[1] -=1 
-    break;     
-} 
-    console.log("dir",dir)
-    console.log("coordinates", coordinates)
-    let y : number = coordinates[0]
-    let x : number = coordinates[1]
-    let status : number = maze[y][x]
-    console.log('Status',status)
-     if((y >= maze.length-1 ||  y <= 0 ||  x >= maze.length ||  x <= 0) && i !=0 ) {
-      returnStr = "Dead"
-      break
-    }
-    if(status == 1){
-      returnStr = "Dead"
-      break;
-    } else if (status == 3){
-      returnStr = "Finish" 
-      break;   
-    }
+  for(const dir of directions){
+    if(dir == "N"){y -= 1} 
+      else if(dir == "S"){y += 1} 
+        else if(dir == "E"){x += 1}
+          else {x -= 1}
     
-   
-  }
-  return returnStr
+    if(x>maze.length-1 || y> maze.length-1 || x<0 || y<0 || maze[y][x] == 1 ) return "Dead"
+    if(maze[y][x] == 3) return "Finish"
+} 
+    
+  return "Lost"
 }
