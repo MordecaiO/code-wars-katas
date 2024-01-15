@@ -12,6 +12,10 @@ For reference, the first two numbers in the Fibonacci sequence are 0 and 1, and 
 
 */
 export function nthFibo(n: number): number {
-
- return 0
+ const k = n-1
+ let bigPhi = (1+Math.sqrt(5))/2
+ let smallPhi = (1-Math.sqrt(5))/2
+ let fibN = (Math.pow(bigPhi,k) - Math.pow(smallPhi,k)) / Math.sqrt(5)
+ console.log("fibN", fibN)
+ return Math.round(fibN)
 }
