@@ -29,3 +29,14 @@ Find the minimum number of jumps to go from start to finish
 Example
 Start 1, finish 5, then answer is 2 (1 => 4 => 5 or 1 => 2 => 5)
 */
+
+export function solution(start: number, finish: number) {
+  let totShelves : number = finish - start ; 
+  if (totShelves < 3) return totShelves 
+  let stepsLeft : number = totShelves % 3 
+  if (stepsLeft == 0){
+    return totShelves / 3 
+  } else {
+    return stepsLeft + Math.floor(totShelves/3)
+  }
+}
