@@ -42,5 +42,24 @@ n = 4: [1,  1, 1,  1, 2, 1,  1, 3, 3, 1]
 */
 
 function pascalsTriangle(n) {
+  let triangles = []; 
   
+  for(let row=0; row<n; row++){
+    
+    let rowArr =[]
+    for(let col=0; col<=row; col++){
+      if (col==0 || col == row){
+        rowArr.push(1)
+      } else {
+        let prevRow = triangles[row-1]
+       
+        let num = prevRow[col] + prevRow[col-1]
+        rowArr.push(num)
+      }
+    }
+    
+    triangles.push(rowArr)
+   
+  }
+  return triangles.flat()
 }
