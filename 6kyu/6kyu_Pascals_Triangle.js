@@ -41,4 +41,6 @@ n = 2: [1,  1, 1]
 n = 4: [1,  1, 1,  1, 2, 1,  1, 3, 3, 1]
 */
 
-
+function pascalsTriangle(n) {
+  
+}
