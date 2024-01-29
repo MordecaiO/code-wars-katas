@@ -19,3 +19,19 @@ the k*k that contain the digit 1 are:
 So there are 11 digits 1 for the squares of numbers between 0 and 25.
 Note that 121 has twice the digit 1.
 */
+
+export class G964 {
+    public static nbDig(n: number, d: number): number {
+        const sqrNums : number[] = []
+        for (let i=0; i<=n; i++){
+          sqrNums.push(i*i)
+        }
+      let sqrNumsStr : string = sqrNums.join("")
+      let counter : number = 0
+      for (let i=0; i<=sqrNumsStr.length; i++){
+          if( sqrNumsStr[i] === d.toString()) counter++
+        }
+      console.log("counter", counter)
+     return counter
+    }
+}
