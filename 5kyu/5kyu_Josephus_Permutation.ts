@@ -25,3 +25,36 @@ For example, with an array=[1,2,3,4,5,6,7] and k=3, the function should act this
 So our final result is:
 
 [3,6,2,7,5,1,4]*/
+
+export const josephus = <T>(items: T[], k: number): T[] => {
+  
+  /*
+  - take array , find next pos to remove , curr pos + k-1 
+  - if next pos is > arr.length , next % arr length to get actual index 
+  */
+  
+  const permute = <T>(alive: T[], dead:T[], startPos: number, k: number) : T[] => {
+    
+    if(alive.length == 0){
+      return dead
+    }  
+    
+    let nextPos = startPos + (k-1)
+    if (nextPos > alive.length){
+      while(nextPos > alive.length){
+        nextPos = nextPos % alive.length
+      }
+      if(nextPos ==0) nextPos = alive.length
+    }
+    let newAlive = [...alive]
+    let removedEl = newAlive.splice(nextPos-1,1);
+    let newDead = [...dead,...removedEl]
+  
+   return  permute(newAlive, newDead, nextPos, k)
+  }
+   
+ let results = permute(items, [], 1, k)
+  
+  return results; 
+  
+};
