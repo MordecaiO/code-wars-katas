@@ -14,3 +14,34 @@ The resulting array or the resulting string will be ordered following the natura
 Examples (in general form):
 backwardsPrime(2, 100) => [13, 17, 31, 37, 71, 73, 79, 97] backwardsPrime(9900, 10000) => [9923, 9931, 9941, 9967] backwardsPrime(501, 599) => []
 */
+
+
+export function  backwardsPrime(start: number, stop: number): number[] {
+  
+  const isPrime = (num: number) : boolean => { 
+    if(num == 2) return true
+    for(let i=2; i<=Math.sqrt(num); i++){
+      if(num % i == 0) return false 
+    }
+    return true 
+  } 
+
+  const reversedNum = (num: number) : number =>{
+    return num > 9 ? parseInt(num.toString().split("").reverse().join("")) : num
+  }
+  
+  const isPalindrome = (num : number) : boolean => {
+    return num == reversedNum(num)
+  }
+  
+  const backwardsPrimes : number[] = []; 
+  
+  for(let i=start; i<=stop; i++){
+    if(isPalindrome(i)) continue
+    if(isPrime(i)){
+      if(isPrime(reversedNum(i))) backwardsPrimes.push(i)
+    } else {
+      continue
+    }
+  }         
+  return backwardsPrimes
