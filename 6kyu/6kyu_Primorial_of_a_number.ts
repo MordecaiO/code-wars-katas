@@ -24,3 +24,25 @@ Since the passed number is (6) ,Then the primorial should obtained by multiplyin
 
 Mathematically written as , P6# = 30030 .
 */
+
+export function numPrimorial(n: number) {
+  const primes : number[] = []; 
+  let count : number = 0; 
+  let currNum : number =2; 
+  const isPrime = (num: number) : boolean => {
+    if(num == 2) return true
+    for(let i=2; i<num; i++){
+      if(num % i == 0) return false
+    }
+    return true 
+  }
+   while(count<n){
+     if(isPrime(currNum)){
+       primes.push(currNum)
+       count++
+     } 
+     currNum++
+   }
+  const primorial = primes.reduce((acc, curr) => acc * curr )
+  return primorial
+}
