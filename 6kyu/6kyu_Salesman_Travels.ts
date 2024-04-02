@@ -25,3 +25,25 @@ travel(r, "OH 43071") --> "OH 43071:Main Street St. Louisville,Main Long Road St
 travel(r, "NY 56432") --> "NY 56432:High Street Pollocksville/786"
 
 travel(r, "NY 5643") --> "NY 5643:/"*/
+
+
+/*
+zipcode: <street and town 1>, <street and town 2>/ <house number 1>, <house number 2>
+*/
+//unfinished
+export const travel = (r:string, zipcode:string): string => {
+  const addressArr : string[] = r.split(",")
+  addressArr.forEach((str) =>{
+    let zipCode = str.match(/([A-Z]{2}\s[0-9]{5})/g)
+    //console.log("zipCode", zipCode)
+    let addressNoZipCodeArr = str.match(/.+?(?=([A-Z]{2}\s[0-9]{5}))/)
+    
+    //let addressNoZipCodeString = addressNoZipCodeArr[0].trim()
+   // let houseNum = addressNoZipCodeString.match(/([\d]+)/g)
+    
+    console.log("addressNoZipCodeArr", addressNoZipCodeArr)
+     //console.log("houseNum", houseNum)
+
+  })
+  return ''
+}
