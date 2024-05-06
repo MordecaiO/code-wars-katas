@@ -46,3 +46,55 @@ menu .item #checkout.active	1, 2, 1
 #foo div#bar.red .none	2, 2, 1
 */
 
+export function compare (a: string, b: string): string {
+  
+  const determineSpecificity = (selectors: string) => {
+    const tagnameMatch = selectors.match(/(?<![#.])\b\w+\b/g)
+    const classMatch = selectors.match(/(\.[a-zA-Z]+)/g)
+    const idMatch = selectors.match(/#[a-zA-Z]+/g) 
+    
+    const tagnameScore = tagnameMatch === null ? 0 : tagnameMatch.length
+    const classScore = classMatch === null ? 0 : classMatch.length
+    const idScore = idMatch === null ? 0 : idMatch.length
+    
+    return [idScore, classScore, tagnameScore]
+  }
+  
+  const compareSpecificity = (a: number[], b: number[]) => {
+     const tagNameA = a[2]
+     const classA = a[1]
+     const idA = a[0]
+     const tagNameB = b[2]
+     const classB = b[1]
+     const idB = b[0]
+     
+     
+     if (idA> idB){
+       return "a > b"
+     } else if (idB > idA){
+       return "b > a"
+     } else if (idB == idA){
+       if (classA> classB){
+       return "a > b"
+     } else if (classB > classA){
+       return "b > a"
+     } else if (classB == classA){
+       if (tagNameA> tagNameB){
+       return "a > b"
+     } else if (tagNameB > tagNameA){
+       return "b > a"
+     } 
+     }
+     }
+     }
+       
+ let aa = determineSpecificity(a) 
+ let bb = determineSpecificity(b)
+ 
+if(compareSpecificity(aa,bb) == "a > b"){
+  return a
+} else {
+  return b
+}
+  
+}
