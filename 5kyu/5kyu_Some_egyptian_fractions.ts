@@ -43,3 +43,46 @@ Example:
 0.6 in Ruby, Python, Clojure,JS, CS, Julia, Go
 
 */
+
+export function decompose(n: string): string[] {
+ const testNum = "1/4"; 
+  
+  const str2Decimal = (str: string) : number =>  {
+    let returnVal = 0
+    if(str.includes("/")){
+    const numbers =  str.split("/").map((x: string) => parseInt(x)); 
+    const [numerator, denominator] = numbers
+    returnVal = numerator/denominator
+    } else {
+      returnVal = Number(str)
+    }
+      return returnVal    
+  }
+  
+  const gcd = (a : number, b : number) : number => {
+  if (b < 0.0000001) return a;           
+
+  return gcd(b, Math.floor(a % b));        
+};
+
+  const decimal2Str = (dec: number) => {
+  const len = dec.toString().length - 2; 
+  let denominator = Math.pow(10,len);
+  let numerator = dec * denominator
+  let divisor = gcd(numerator, denominator)
+  numerator /= divisor;                        
+  denominator /= divisor;
+  
+  return Math.floor(numerator) + '/' + Math.floor(denominator)
+}
+
+
+  
+  const fibGreedy = (num:number, vals: number[]) => {
+    const sum = vals.reduce((acc, currVal) => acc + currVal);
+    if(sum == num) return 
+    
+  }
+  
+  return []
+}
