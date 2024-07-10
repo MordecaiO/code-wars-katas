@@ -15,3 +15,10 @@ Example
 "128.32.10.1" => 2149583361
 */
 
+export function ipToInt32(ip: string): number {
+  if(ip == "0.0.0.0") return 0
+  const binaryOctets = ip.split(".").map(x => Number(x).toString(2).padStart(8,"0")) 
+  const int32 = binaryOctets.join("")
+  let value = parseInt(int32, 2)
+  return value;
+}
