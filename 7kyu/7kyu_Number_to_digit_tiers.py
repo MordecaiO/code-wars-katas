@@ -9,3 +9,13 @@ Examples
 80200 should return ["8", "80", "802", "8020", "80200"]
 PS: The input is guaranteed to be an integer in the range [0, 1000000]
 '''
+def create_array_of_tiers(n):
+    # your awesome code here
+    string = str(n)
+    output = []
+    for index in range(len(string)+1):
+        if(not index == 0):
+            new = [string[index] for index in range(index)]
+            joined = "".join(new)
+            output.append(joined)
+    return output
