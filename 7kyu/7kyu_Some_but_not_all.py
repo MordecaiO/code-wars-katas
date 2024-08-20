@@ -11,4 +11,13 @@ Examples
 ([4, 4], x -> x > 3) == false
 '''
 
-
+def some_but_not_all(seq, pred): 
+    pred_is_valid = False
+    not_all_is_valid = False
+    for element in seq:
+        if(pred(element)):
+            pred_is_valid = True
+        else:
+            not_all_is_valid = True
+    return pred_is_valid and not_all_is_valid == True
+    pass
