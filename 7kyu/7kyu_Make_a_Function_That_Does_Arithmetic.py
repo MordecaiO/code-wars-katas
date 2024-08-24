@@ -12,3 +12,12 @@ A few examples:(Input1, Input2, Input3 --> Output)
 5, 2, "multiply" --> 10
 5, 2, "divide"   --> 2.5
 '''
+def arithmetic(a, b, operator):
+    if operator == "add":
+        return a+b
+    elif operator == "subtract":
+        return a-b
+    elif operator == "multiply":
+        return a*b
+    else:
+        return a/b
