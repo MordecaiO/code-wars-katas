@@ -13,3 +13,11 @@ like_or_dislike([Like, Like]) ➞ Nothing
 like_or_dislike([Dislike, Like]) ➞ Like
 like_or_dislike([Like, Dislike, Dislike]) ➞ Nothing
 '''
+def like_or_dislike(lst):
+    status = Nothing
+    for action in lst:
+        if(status == action):
+            status = Nothing
+        else:
+            status = action
+    return status
