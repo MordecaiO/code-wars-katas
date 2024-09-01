@@ -35,3 +35,28 @@ A "gap" is more restrictive: there must be no primes in between (101-107 is a "s
 
 For Go: nil slice is expected when there are no step between m and n. Example: step(2,4900,4919) --> nil
 */
+
+export function step(step:number, start:number, end:number): [number,number]|null {
+  const isPrime = (num: number) : boolean => {
+    if(num < 2) return false 
+    const root : number = Math.ceil(Math.sqrt(num))
+    for(let i=2; i<=root; i++){
+      if(num % i == 0) return false 
+    }
+    return true
+  }
+      let primes : number[] = Array.from({length: end - start},(_,i) => start+i).filter(num => isPrime(num))
+  console.log(primes)
+  let nums : [number,number]|null = []
+  for(let i=0; i<primes.length; i++){
+    let num = primes[i]
+    let nextNum = primes[i+1]
+    let currStep = nextNum - num
+    if(step == currStep){
+      nums = [num, nextNum]
+      break
+    }
+  }
+  console.log("hello",nums)
+  return nums
+}
