@@ -27,3 +27,27 @@ N23.43345, E32.6457
 0.342q0832, 1.2324
 
 */
+
+// BRUTE FORCE 
+
+let coArr = coordinates.split(",")
+   if(coArr.length > 2) return false
+   let [lat, long] = coArr 
+   if(!parseInt(lat) || !parseInt(long)) return false
+   if(parseInt(lat) > 90 || parseInt(lat) < -90) return false
+   if(parseInt(long) > 180 || parseInt(long) < -180) return false
+   if(lat.indexOf("-") != lat.lastIndexOf("-")) return false 
+   if(long.indexOf("-") != long.lastIndexOf("-")) return false 
+    if(long.indexOf("-") != 1 && long.indexOf("-") != -1) return false 
+   if(lat.match(/[a-zA-z]/g) || long.match(/[a-zA-z]/g)) return false
+   if(lat.match(/[a-zA-z]/g) || long.match(/[a-zA-z]/g)) return false
+   let commas = 0, dashes = 0, underscores = 0, fullstops = 0
+    for(let i = 0; i<=coordinates.length; i++){
+      if(coordinates[i] == ",") commas++
+      if(coordinates[i] == "-") dashes++ 
+      if(coordinates[i] == "_") underscores++ 
+      if(coordinates[i] == ".") fullstops++ 
+    }
+   if(commas>2 || dashes>2 || fullstops > 2 || underscores> 1) return false
+  return true; // do your thing!
+}
