@@ -10,3 +10,13 @@ Examples
 ["a:12345", "777:xyz"]  -->  ["a:xyz", "777:12345"]
 
 */
+
+export function tailSwap(arr: [string,string]): [string,string] {
+  let [a, b] = arr
+  let headA = a.slice(0, a.indexOf(":"))
+  let tailA = a.slice(a.indexOf(":") +1)   
+  let headB = b.slice(0, b.indexOf(":"))
+  let tailB = b.slice(b.indexOf(":") +1)
+  const output :[string,string] = [headA+":"+tailB, headB+":"+tailA]
+  return output;
+}
