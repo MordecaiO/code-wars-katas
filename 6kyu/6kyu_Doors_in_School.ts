@@ -14,25 +14,5 @@ Example:
 */
 
 export const doors = (n: number): number => {
-  const pupils = new Array(n).fill(null).map((_,i) => i+1)
-  let changedDoors : boolean[] = [...Array(n)].map(x => false)
-  const divisors = (n:number):number => {
-    if(n == 1) return 1
-    let count = 0; 
-    for(let i=0; i<n; i++){
-      if(n%i == 0) count++
-    }
-    return count
-  }
-  console.log("divisors test",divisors(6))
-  changedDoors.map((door,i) => {
-    console.log("divisors",divisors(i+1))
-    if(divisors(i+1) % 2 == 0){
-      return door
-    } else {
-      return !door
-    }
-  })
-  let openDoors : number = changedDoors.filter(door => door).length
-  return openDoors
+return(Math.floor(Math.sqrt(n)))
 }
