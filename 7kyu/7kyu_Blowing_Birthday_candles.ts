@@ -42,3 +42,18 @@ Move 5 | "000(1)" -> "0000"
 
 This should return 5.
 */
+
+
+export function blowCandles(str: string): number {
+ let candles : number[] = str.split("").map(x => Number(x))
+ let start : number = candles.findIndex(x => x != 0)
+ let blows : number = 0; 
+ while (start != -1){
+   candles[start] = candles[start] - 1 
+   if(candles[start +1]) candles[start+1] = candles[start+1] -1
+   if(candles[start +2]) candles[start+2] = candles[start+2] -1
+   start = candles.findIndex(x => x != 0)
+   blows++
+ }
+  return blows
+}
