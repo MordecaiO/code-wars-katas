@@ -15,3 +15,9 @@ The languages are encoded by the letters D for Deutsch, F for Français, I for I
 
 Your task is to write a function that takes a list of three languages and returns the language the group should use.7 8
 */
+
+// input is a string of three chars from the set 'D', 'F', 'I', 'K'
+// output is a single char from this set
+export function trilingualDemocracy(group: string): string {
+  return "?";
+}
