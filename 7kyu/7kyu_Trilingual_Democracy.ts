@@ -19,5 +19,21 @@ Your task is to write a function that takes a list of three languages and return
 // input is a string of three chars from the set 'D', 'F', 'I', 'K'
 // output is a single char from this set
 export function trilingualDemocracy(group: string): string {
-  return "?";
+ let languages = ["D", "F", "I", "K"]; 
+ let groupArr = [...group];
+ let missingLan = ""; 
+  languages.forEach((lan) => {
+    if(!groupArr.includes(lan)) missingLan = lan
+  })
+ let countObj : {[key:string]: number} = {}; 
+groupArr.forEach(lan => countObj[lan] ? countObj[lan] +=1 : countObj[lan] = 1)
+  let lanArr = Object.keys(countObj)
+  if(lanArr.length == 1){
+    return lanArr[0]
+  } else if (lanArr.length == 2) {
+    lanArr.sort((a,b) => countObj[b] - countObj[a])
+    return lanArr[1]
+  } else {
+    return missingLan
+  }
 }
