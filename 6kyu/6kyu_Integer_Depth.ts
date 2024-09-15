@@ -20,3 +20,17 @@ Hence it required 9 multiples of 42 to get all the digits. So the depth of 42 is
 Write a function named computeDepth which computes the depth of its integer argument.
 Only positive numbers greater than zero will be passed as an input.
 */
+
+export function computeDepth(n: number): number {
+  let ints = new Array(10).fill(null).map((n,i) => i+"")
+  let multiple : number = 0; 
+  while(ints.length >= 1){
+    multiple++
+    let currNum : string = (multiple*n)+"";
+    [...currNum].forEach((dig) => {
+      let indexOfDig : number = ints.findIndex(el => el == dig)
+      if(indexOfDig != -1) ints.splice(indexOfDig,1)
+    })
+  }
+  return multiple;
+}
