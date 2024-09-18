@@ -32,3 +32,5 @@ The second possible answer is 100:
 he can buy 7 boats each worth 14: 100 - 7 * 14 = 2
 or he can buy 9 cars worth 11: 100 - 9 * 11 = 1
 */
+
+
