@@ -33,4 +33,17 @@ he can buy 7 boats each worth 14: 100 - 7 * 14 = 2
 or he can buy 9 cars worth 11: 100 - 9 * 11 = 1
 */
 
-
+export function howMuch(m: number, n: number): string[][] {
+  if(n-m < 1) [m,n] = [n, m]
+  let sequence = new Array(n-m+1).fill(0).map((el,i) => i+m)
+  let returnArr: string[][] = []
+ for(let i=0; i<=sequence.length;i++){
+   let num = sequence[i]
+   let b = (num-2) / 7  
+    let c = (num-1) / 9
+    if((b%1 == 0 && b > 0) && (c%1 == 0 && c > 0)){
+      returnArr.push([`M: ${num}`, `B: ${b}`, `C: ${c}`])
+    }
+ }
+  return returnArr
+}
