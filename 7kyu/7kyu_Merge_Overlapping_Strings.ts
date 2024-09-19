@@ -11,3 +11,11 @@ NOTE: The algorithm should always use the longest possible overlap.
 "abaabaab" + "aabaabab" would be "abaabaabab" and not "abaabaabaabab"
 
 */
+export const mergeStrings = (first: string, second: string): string => {
+  let overlap = 0 ; 
+  
+  for(let i=1; i<=first.length; i++){
+    if(first.slice(-i) == second.slice(0,i)) overlap =i 
+  }
+  return first + second.slice(overlap)
+}
