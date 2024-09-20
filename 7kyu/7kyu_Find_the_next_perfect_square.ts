@@ -12,3 +12,7 @@ Examples ( Input --> Output )
 625 --> 676
 114 --> -1  #  because 114 is not a perfect square
 */
+export function findNextSquare(sq:number):number {
+  let root : number = Math.sqrt(sq)
+  return Number.isInteger(root) ? Math.pow(root+1,2) : -1
+}
