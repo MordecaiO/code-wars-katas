@@ -9,3 +9,23 @@ However, Johnny would like to know the minimal amount of people that participate
 Help Johnny by writing a function, that takes the amount of handshakes and 
 returns the minimal amount of people needed to perform these handshakes (a pair of farmers handshake only once).
 */
+
+export function getParticipants(handshakes: number): number{
+  if(handshakes == 0 ) return handshakes
+  if(handshakes == 1 ) return 2
+  let participants = 0;
+  for(let i=1; i<=handshakes; i++){
+    let target=0;
+    for(let j=i; j>0; j--){
+      target+=(j-1)
+      if(target>=handshakes) break
+    }
+    if(target>=handshakes) 
+      {
+         participants = i
+        break
+      }
+  }
+ return participants
+  
+}
