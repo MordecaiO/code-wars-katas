@@ -10,3 +10,11 @@ Even indices 0, 2, 4, 6, so we have "CdWr" as the first group.
 Odd indices are 1, 3, 5, 7, so the second group is "oeas".
 And the final string to return is "Cdwr oeas".
 */
+
+export function sortMyString(s:string):string {
+  let odd : string[] = [] , even : string[] = [];
+  for(let i=0; i<=s.length; i++ ){
+    i % 2 == 0 || i == 0 ? even.push(s[i])  : odd.push(s[i])
+  }
+  return even.join("")+" "+odd.join("")
+}
