@@ -19,3 +19,13 @@ e.g. if innerMax is 3 and outerMax is 2 then after
 Therefore it takes 2 moves for the two rings to reach the same number
 spinningRings(3, 2) = 2
 */
+export function spinningRings(innerMax: number, outerMax: number): number {
+  let numberOfSpinsTillRingsAreEqual = 0;
+  let inner = 0, outer = 0; 
+  do{
+   inner == 0 ? inner = innerMax : inner-- ; 
+   outer == outerMax ? outer = 0 : outer++ ; 
+    numberOfSpinsTillRingsAreEqual++
+  } while (inner != outer) ;
+  return numberOfSpinsTillRingsAreEqual;
+};
