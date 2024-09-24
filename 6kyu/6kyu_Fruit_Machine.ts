@@ -34,3 +34,36 @@ reel3[5] == "Cherry"
 Cherry + Cherry + Cherry == 50
 
 */
+
+export function fruit(reels: string[][], spins: number[]): number{
+  const scoreKey : {[index:string]: number} = {
+          "Jack": 1, "Queen": 2,
+           "King": 3,"Bar": 4,
+           "Cherry": 5,"Seven": 6,
+           "Shell": 7,"Bell": 8, 
+           "Star": 9,"Wild": 10, 
+        }
+  let finalScore : number = 0; 
+  const reel1 = reels[0], reel2 = reels[1], reel3 = reels[2]
+  const spin1 = spins[0], spin2 = spins[1], spin3 = spins[2] 
+  const spinResults = [reel1[spin1], reel2[spin2], reel3[spin3]]
+  let countObj : {[index:string]: number} = {}
+  spinResults.forEach(result => countObj[result] ? countObj[result] += 1 : countObj[result] = 1)
+  console.log("spinResults", spinResults)
+  console.log("countObj", countObj)
+  let countArr = Object.keys(countObj)
+  countArr.sort()
+  console.log("countArr", countArr)
+  const containsWild : boolean = countArr.includes("Wild")
+  if(countArr.length === 1){
+    const onlyFruit = countArr[0]
+    finalScore = scoreKey[onlyFruit] * 10
+  } else if (countArr.length == 2 && containsWild){
+    const otherFruit = countArr[0]
+    finalScore = scoreKey[otherFruit] * 2
+  } else if (countArr.length == 2 && !containsWild){
+    const otherFruit = countArr[0]
+    finalScore = scoreKey[otherFruit]
+  }
+  return finalScore
+}
