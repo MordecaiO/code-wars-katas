@@ -49,18 +49,19 @@ export function fruit(reels: string[][], spins: number[]): number{
   const spinResults = [reel1[spin1], reel2[spin2], reel3[spin3]]
   let countObj : {[index:string]: number} = {}
   spinResults.forEach(result => countObj[result] ? countObj[result] += 1 : countObj[result] = 1)
-  console.log("spinResults", spinResults)
-  console.log("countObj", countObj)
   let countArr = Object.keys(countObj)
-  countArr.sort()
-  console.log("countArr", countArr)
+  countArr.sort((a,b) => countObj[b] - countObj[a])
   const containsWild : boolean = countArr.includes("Wild")
   if(countArr.length === 1){
     const onlyFruit = countArr[0]
     finalScore = scoreKey[onlyFruit] * 10
   } else if (countArr.length == 2 && containsWild){
-    const otherFruit = countArr[0]
-    finalScore = scoreKey[otherFruit] * 2
+    if(countObj["Wild"] == 2){
+      finalScore = scoreKey["Wild"]
+    } else {
+      const otherFruit = countArr[0]
+      finalScore = scoreKey[otherFruit] * 2
+    }
   } else if (countArr.length == 2 && !containsWild){
     const otherFruit = countArr[0]
     finalScore = scoreKey[otherFruit]
