@@ -6,3 +6,8 @@ and returns an ordered list containing the indices of all capital (uppercase) le
 Example (Input --> Output)
 "CodEWaRs" --> [0,3,4,6]
 */
+
+export function capitals (word: string): number[] {
+ return word.split("").map((x,i) => x.toUpperCase() == x ? i : Infinity )
+                   .filter(x => x != Infinity)   
+}
