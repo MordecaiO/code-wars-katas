@@ -23,3 +23,15 @@ Task
 How much can I (or my friend) win or loses for each game if the chessboard has n rows and n columns? 
 Add all of the fractional values on an n by n sized board and give the answer as a simplified fraction.
 */
+
+export function game(n: number): number[] {
+let board: number[][] = [];
+  for(let i=1; i<=n; i++){
+    let row : number[] = []
+    for(let j=1; j<=n; j++){
+      row.push(1/(i+j))
+    }
+    board.push(row)
+}
+  return [0]
+}
