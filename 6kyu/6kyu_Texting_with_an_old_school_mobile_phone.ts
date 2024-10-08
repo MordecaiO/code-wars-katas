@@ -68,3 +68,20 @@ More examples are provided in sample test suite.
 
 All inputs will be valid strings and only consist of characters from the key layout table.
 */
+
+
+export function sendMessage(message: string): string {
+  const keyArr : string[][] = [
+    [" "], [".",",","?","!"], ["a","b","c"], ["d","e","f"], ["g","h","i"], ["j","k","l"], ["m","n","o"],
+    ["p","q","r","s"], ["t","u","v"], ["w","x","y","z"]
+  ]
+  interface key {[index:string]: string}
+  const keyObj : key = {}
+  keyArr.forEach((button,num)=> {
+    button.forEach((char,pos) => {
+      keyObj[char] = num.toString().repeat(pos+1)
+    })
+  })
+  console.log(keyObj)
+  return message;
+}
