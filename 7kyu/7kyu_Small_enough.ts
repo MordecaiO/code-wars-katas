@@ -6,3 +6,6 @@ You can assume all values in the array are numbers.
 */
 
 
+export function smallEnough(a: number[], limit: number): boolean{
+  return !a.some((number) => number > limit)
+}
