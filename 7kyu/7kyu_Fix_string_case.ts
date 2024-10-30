@@ -12,3 +12,15 @@ solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
 More
 
 */
+
+// may have mixed uppercase and lowercase letters
+// convert to either lowercase only or uppercase only 
+// based on: make as few changes as possible
+// equal number of uppercase and lowercase letters, set lowercase.
+
+export function solve(s: string): string {
+  let upperCount : number = 0, lowerCount : number = 0, fixedS : string = s ; 
+  s.split("").forEach((char) => char.toUpperCase() == char ? upperCount++ : lowerCount++)
+  upperCount > lowerCount ? fixedS = s.toUpperCase() : fixedS = s.toLowerCase()
+  return fixedS; 
+}
