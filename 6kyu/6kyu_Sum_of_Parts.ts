@@ -24,3 +24,15 @@ parts_sums(ls) -> [10037855, 9293730, 9292795, 9292388, 9291934, 9291504,
 9291414, 9291270, 2581057, 2580168, 2579358, 0]
 
 */
+
+export function partsSums(ls: number[]): number[] {
+  const totalSum :number = ls.reduce((a,b) => a+b,0)
+  let currSum : number = totalSum
+  let arrOfSums : number[]= [totalSum]
+  for(let i=0; i<ls.length; i++){
+    const newSum = currSum - ls[i] 
+    arrOfSums.push(newSum)
+    currSum = newSum
+  }
+  return arrOfSums
+}
