@@ -17,3 +17,20 @@ What you must do is find the resulting string if the first domino is pushed over
 "/// ||||//| |/"
 since the reaction would stop as soon as it gets to a space.
 */
+export function dominoReaction(sequence: string): string{
+    if(!sequence.includes('|')) return sequence
+    if(!sequence.includes('/') && !sequence.includes(' ')) return sequence.split("").map(x => x == '|' ? '/' : x).join("")
+    
+    if(sequence[0] == '|'){
+      let reactionStopIndex : number = 0; 
+      for(let i=0; i<=sequence.length; i++){
+        if(sequence[i] == '/' || sequence[i] == " "){
+          reactionStopIndex = i; 
+          break
+        }
+      }
+      const tippedSequence : string = sequence.split("").map((x,i) => i < reactionStopIndex ? '/' : x).join("")
+      return tippedSequence
+    }
+return sequence
+}
