@@ -22,3 +22,19 @@ Examples
 "xxxxYxYx" and w = 5   -->  3
 "xxxxxYxYx" and w = 2  -->  5
 */
+
+export function waterbombs(fire: string, w: number): number {
+  if(!fire.includes("x")) return 0
+  let bombs : number = 0; 
+  let fires : string[] = fire.split("Y"); 
+  fires.forEach((fire) => {
+    if(fire == '') return
+    if(w >= fire.length){
+      bombs += 1; 
+    } else {
+      bombs += Math.ceil(fire.length/w)
+    }
+  })
+  return bombs;
+}
+
