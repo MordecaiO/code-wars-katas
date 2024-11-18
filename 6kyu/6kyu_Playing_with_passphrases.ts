@@ -18,3 +18,22 @@ your text: "BORN IN 2015!", shift 1
 
 5 "!4897 Oj oSpC"
 */
+export function playPass(s: string, n: number): string {
+  // define alphabet and create copy of input string as array
+  let arrAlphabet : Array<string> = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  let arrChars : Array<string> = [...s].map((item : string, index: number)=> {
+    let isAlphabetic : boolean = /[a-zA-Z]/.test(item)
+    let isNumeric : boolean = /[\d]/.test(item)
+    let isEvenIndex : boolean = index % 2 == 0 
+    if (isAlphabetic){
+      let newIndex : number = arrAlphabet.indexOf(item) + n ; 
+      if (newIndex > 25) newIndex -= 26
+      return isEvenIndex ? arrAlphabet[newIndex].toUpperCase() : arrAlphabet[newIndex].toLowerCase()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    } else if(isNumeric){
+      return "" + Math.abs(Number(item) - 9)
+    } else {
+      return item
+    }
+  }).reverse()
+  return arrChars.join("")
+}
