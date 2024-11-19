@@ -25,6 +25,17 @@ finance(7) --> 252
 finance(5000) --> 62537505000
 Note:
 your solution will be nicer without loops.
-
-
 */
+
+export function finance(n: number): number {
+//   let arr = new Array(n+1).fill("")
+//   .map((item,index) => {
+//    return Array.from(new Array(index + 1).fill(""),(x,i) => i+index).reduce((a,b) => a+b)
+//   }).reduce((a,b) => a+b) 
+//   return arr
+  let threeArr = Array.from({length: n}, (_, i) => (i+1) * 3)
+  console.log(threeArr)
+  let arr = new Array(n+1).fill("").map((x,i,a) => threeArr[i] + )
+  console.log(arr)
+  return 0
+}
