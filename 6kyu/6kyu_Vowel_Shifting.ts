@@ -21,3 +21,19 @@ output = "This as e tist!"
 If text is null or empty return exactly this value.
 Vowels are "a,e,i,o,u".
 */
+
+export function vowelShift(text:string|null, n:number):string|null {
+  const regExp = /[aeiou]/g
+  if(text){
+  const shiftLimit = text.length
+  const vowelIdxs : number[] = []
+  text.split("").forEach((char,index) => {
+    if(regExp.test(char)) vowelIdxs.push(index) 
+  })
+    console.log(vowelIdxs)
+  } else {
+  return text
+  }
+  
+  return "?";
+}
