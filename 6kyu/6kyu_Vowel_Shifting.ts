@@ -23,17 +23,36 @@ Vowels are "a,e,i,o,u".
 */
 
 export function vowelShift(text:string|null, n:number):string|null {
-  const regExp = /[aeiou]/g
+  console.log("text", text)
+  console.log("n", n)
+  const regExp = /[aeiouAEIOU]/g
   if(text){
-  const shiftLimit = text.length
   const vowelIdxs : number[] = []
   text.split("").forEach((char,index) => {
     if(regExp.test(char)) vowelIdxs.push(index) 
   })
     console.log(vowelIdxs)
+    let newVowelIdxs : number[] = []
+    const numOfVowels = vowelIdxs.length
+      for(let i=0; i<numOfVowels; i++){
+        const shiftIdx =  n+i >= numOfVowels || n+1 < 0 ? 
+              (n+i) % numOfVowels : n+i
+        const newVowelIdx = vowelIdxs[shiftIdx]
+        newVowelIdxs.push(newVowelIdx)
+      }
+    console.log("newVowelIdxs",newVowelIdxs)
+    let newTextArr = text.split("");
+    for(let i=0; i<numOfVowels; i++){
+        const vowelIdx = vowelIdxs[i]
+        const vowel = text[vowelIdx]
+        const newVowelIdx = newVowelIdxs[i]
+        newTextArr[newVowelIdx] = vowel
+      }
+     text = newTextArr.join("")
+    console.log("newText", text)
   } else {
   return text
   }
   
-  return "?";
+  return text;
 }
